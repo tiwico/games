@@ -11,19 +11,19 @@ pygame.init()
 # Screen setup
 screen_width, screen_height = 800, 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("ChatGPT Game")
+pygame.display.set_caption("Lasagna Chat Game")
 clock = pygame.time.Clock()
 
 # Variables
-images = "/Users/tim.cook/Documents/astro-game/images/"
+images = "/"
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 pattern = r'\b(night|dark)\b'
 pattern_2 = r'\b(day|light)\b'
 time_of_day = "day"
 
 # Load background images
-background_image = pygame.image.load(images + 'background-1.png')
-background_image_night = pygame.image.load(images + 'background-1-ng.png')
+background_image = pygame.image.load('background-1.png')
+background_image_night = pygame.image.load('background-1-ng.png')
 
 # Colors and font
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
@@ -50,7 +50,7 @@ semi_transparent_grey = (*DARK_PURPLE, 125)
 conversation_df = pd.DataFrame(columns=['Speaker','User-id', 'Message'])
 
 # Define the character and its starting position
-character_ani = [pygame.image.load(images + f'giphy-meditation-{i}.png') for i in range(1, 8)]
+character_ani = [pygame.image.load(f'giphy-meditation-{i}.png') for i in range(1, 8)]
 character_height = 100
 start_x = screen_width // 2  # Center horizontally
 start_y = screen_height // 2 - character_height // 2 + 100  # Position near bottom
@@ -90,7 +90,7 @@ def chat_with_gpt(message, max_chars=1000):
             client = OpenAI(api_key='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')
             response = client.completions.create(
                 model="text-davinci-003",
-                prompt="Your name is Astro please respond in a professional tone: " + message + ". Try to limit text to 150 characters max.",
+                prompt="Your name is Lasagna please respond in a professional tone: " + message + ". Try to limit text to 150 characters max.",
                 max_tokens=60)
             return response.choices[0].text.strip()
         except Exception as e:
