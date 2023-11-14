@@ -76,7 +76,7 @@ def chat_with_gpt(message, max_chars=1000):
             return "Sorry, I couldn't process that message."
     elif re.search(pattern_2, input_text, re.IGNORECASE):
         try:
-            client = OpenAI(api_key='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')
+            client = OpenAI(api_key='<API KEY>')
             response = client.completions.create(
                 model="text-davinci-003",
                 prompt="Acknowledge that the user is speaking about day: " + message + ". Try to limit text to 150 characters max.",
@@ -87,7 +87,7 @@ def chat_with_gpt(message, max_chars=1000):
             return "Sorry, I couldn't process that message."
     else:
         try:
-            client = OpenAI(api_key='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')
+            client = OpenAI(api_key='<API KEY>')
             response = client.completions.create(
                 model="text-davinci-003",
                 prompt="Your name is Lasagna please respond in a professional tone: " + message + ". Try to limit text to 150 characters max.",
